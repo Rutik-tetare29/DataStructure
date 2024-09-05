@@ -38,7 +38,7 @@ int main() {
     push(70);
     pop();
     pop();
-    printf("\nStack values are :");
+    printf("\nStack values are :\n");
     
     for(i=top;i>=0;i--)
     {
