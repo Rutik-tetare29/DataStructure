@@ -5,8 +5,8 @@
 char stack[MAX];
 int top = -1;
 
-void push(char x) {
-    stack[++top] = x;
+void push(char value) {
+    stack[++top] = value;
 }
 
 char pop() {
@@ -16,19 +16,19 @@ char pop() {
         return stack[top--];
 }
 
-int priority(char x) {
-    if (x == '(')
+int priority(char value) {
+    if (value == '(')
         return 0;
-    if (x == '+' || x == '-')
+    if (value == '+' || value == '-')
         return 1;
-    if (x == '*' || x == '/')
+    if (value == '*' || value == '/')
         return 2;
     return 0;
 }
 
 int main() {
     char exp[50];
-    char x;
+    char value;
     int i = 0;
 
     printf("Enter Expression: ");
@@ -42,8 +42,8 @@ int main() {
         } else if (exp[i] == '(') {
             push(exp[i]);
         } else if (exp[i] == ')') {
-            while ((x = pop()) != '(')
-                printf("%c ", x);
+            while ((value = pop()) != '(')
+                printf("%c ", value);
         } else {
             while (top != -1 && priority(stack[top]) >= priority(exp[i])) {
                 printf("%c ", pop());
